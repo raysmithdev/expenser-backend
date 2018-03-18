@@ -20,10 +20,10 @@ router.get('/:userId', (req, res) => {
 })
 
 router.post('/:userId', (req, res) => {
-  console.log(req.body.date);
   const expense = {
     amount: req.body.amount,
     category: req.body.category,
+    owner: req.body.owner,
     location: req.body.location,
     createdAt: req.body.date,
   }
@@ -45,7 +45,7 @@ router.post('/:userId', (req, res) => {
 router.post('/filter/:userId', (req, res) => {
   User.findOne({_id: req.params.userId})
     .where('expenses.category')
-    .equals('Coffee') 
+    .equals('Coffee')
     .then(user => {
       console.log(user.expenses);
     })
