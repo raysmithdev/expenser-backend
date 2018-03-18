@@ -24,6 +24,7 @@ router.post('/:userId', (req, res) => {
     amount: req.body.amount,
     category: req.body.category,
     owner: req.body.owner,
+    workExpense: req.body.workExpense,
     location: req.body.location,
     createdAt: req.body.date,
   }

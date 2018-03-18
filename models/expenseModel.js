@@ -4,6 +4,7 @@ const ExpenseSchema = mongoose.Schema({
   amount: { type: 'String' },
   category: { type: 'String' },
   owner: { type: 'String' },
+  workExpense: { type: Boolean },
   location: { type: 'String' },
   createdAt: { type: 'String' }
 })
