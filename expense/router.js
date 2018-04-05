@@ -12,9 +12,11 @@ const { User } = require('../models/userModel')
 router.use(jwtAuth)
 router.use(bodyParser.json())
 
+// Get user expenses
 router.get('/:userId', (req, res) => {
   User.findById(req.params.userId)
     .then(user => {
+      console.log(user);
       res.json(user.expenses)
     })
 })
@@ -38,6 +40,22 @@ router.post('/:userId', (req, res) => {
           res.send(err)
         }
         res.json(user)
+      })
+    })
+})
+
+router.delete('/:userId', (req, res) => {
+
+  User.findById(req.params.userId)
+    .then(user => {
+
+      user.expenses.id(req.body.expenseId).remove()
+
+      user.save(err => {
+        if (err) {
+          res.send(err)
+        }
+        res.json(user.expenses)
       })
     })
 })
